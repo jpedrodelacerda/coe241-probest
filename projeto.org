@@ -1,0 +1,103 @@
+#+AUTHOR: João Pedro de Lacerda
+
+* Introdução
+
+O projeto final do curso de Estatística e Modelos Probabilísticos consiste na análise crítica de um conjunto de dados obtidos pelo Professor Cláudio Gil Soares de Araújo.
+
+#+BEGIN_SRC jupyter-python :display plain
+import pandas as pd
+import numpy as np
+import seaborn as sns
+
+data = pd.read_csv("./data/dadosMedicos.csv", sep = " ")
+#+END_SRC
+
+#+RESULTS:
+
+* Estatísticas preliminares
+
+Obtendo as estatísticas preliminares do conjunto de dados:
+
+- Média
+
+#+BEGIN_SRC jupyter-python :display plain 
+data_medias = data.mean(axis = 'index')
+data_medias
+#+END_SRC
+
+#+RESULTS:
+: idade          53.290956
+: peso           85.925776
+: cargaFinal    172.271502
+: vo2Max         29.394728
+: dtype: float64
+
+- Variância
+
+#+BEGIN_SRC jupyter-python :display plain
+data_var = data.var(axis = 'index')
+data_var
+#+END_SRC
+
+#+RESULTS:
+: idade          217.453274
+: peso           219.013757
+: cargaFinal    4913.045985
+: vo2Max         110.192255
+: dtype: float64
+
+- Moda
+#+BEGIN_SRC jupyter-python :display plain
+data_moda = data.mode(axis = 'index')
+data_moda
+#+END_SRC
+
+#+RESULTS:
+:    idade  peso  cargaFinal     vo2Max
+: 0   59.0  72.5       250.0  14.285714
+: 1    NaN  81.5         NaN        NaN
+
+- Histogramas
+
+  - Idade
+#+BEGIN_SRC jupyter-python :file ./images/idade_hist.png
+sns.distplot(data['idade'])
+#+END_SRC
+
+#+RESULTS:
+:RESULTS:
+: <matplotlib.axes._subplots.AxesSubplot at 0x7fb3adba47c0>
+[[file:./images/idade_hist.png]]
+:END:
+  - Peso
+#+BEGIN_SRC jupyter-python :file ./images/peso_hist.png
+sns.distplot(data['peso'])
+#+END_SRC
+
+#+RESULTS:
+:RESULTS:
+: <matplotlib.axes._subplots.AxesSubplot at 0x7fb3adb1d3d0>
+[[file:./images/peso_hist.png]]
+:END:
+  - Carga Final
+
+#+BEGIN_SRC jupyter-python :file ./images/carga_hist.png
+sns.distplot(data['cargaFinal'])
+#+END_SRC
+
+#+RESULTS:
+:RESULTS:
+: <matplotlib.axes._subplots.AxesSubplot at 0x7fb3ada62970>
+[[file:./images/carga_hist.png]]
+:END:
+  - VO2 Máximo
+
+#+BEGIN_SRC jupyter-python :file ./images/vo2Max_hist.png
+sns.distplot(data['vo2Max'])
+#+END_SRC
+
+#+RESULTS:
+:RESULTS:
+: <matplotlib.axes._subplots.AxesSubplot at 0x7fb3ad89dbb0>
+[[file:./images/vo2Max_hist.png]]
+:END:
